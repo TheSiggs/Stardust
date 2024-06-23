@@ -2,15 +2,17 @@ class_name PrototypeClicker
 extends Control
 ## A clicker prototype create stardust
 
-## Reference to label
-@export var label : Label
 
-## Stardust
-var stardust : int = 0
+## View Reference
+@export var view : UserInterface.Views 
+## Reference UI
+@export var user_interface : UserInterface
+
 
 ## Initilize label
 func _ready() -> void:
-	update_label_text()
+	visible = true
+	user_interface.navigation_requested.connect(_on_navigation_request)
 
 ## Update stardust label on click
 func _on_button_pressed():
@@ -18,9 +20,13 @@ func _on_button_pressed():
 
 ## Add stardust count
 func create_stardust() -> void:
-	stardust += 1
-	update_label_text()
+	HandlerStardust.ref.create_stardust(1)
 
-## Update Label
-func update_label_text() -> void:
-	label.text = "Stardust : %s" % stardust
+
+## Watch for nav requests
+func _on_navigation_request(requested_view : UserInterface.Views) -> void:
+	if requested_view == view:
+		visible = true
+		return
+	
+	visible = false

@@ -2,19 +2,23 @@ class_name PrototypeGenerator
 extends Control
 ## Generator prototype generating stardust every second
 
-## Reference to label
-@export var label : Label
+
 ## Refernece to timer
 @export var timer : Timer
 ## Reference to button
 @export var button : Button
+## View Reference
+@export var view : UserInterface.Views 
+## Reference UI
+@export var user_interface : UserInterface
 
-## stardust
-var stardust : int
 
 ## initialize label
 func _ready() -> void:
-	update_label_text()
+	visible = false
+	
+	user_interface.navigation_requested.connect(_on_navigation_request)
+
 
 ## start timer and disable button on press
 func start_generating_stardust() -> void:
@@ -23,12 +27,8 @@ func start_generating_stardust() -> void:
 
 ## increment stardust
 func create_stardust() -> void:
-	stardust += 1
-	update_label_text()
+	HandlerStardust.ref.create_stardust(1)
 
-## Set label
-func update_label_text() -> void:
-	label.text = "Stardust : %s" % stardust
 
 ## Trigers stardust generation
 func _on_button_pressed():
@@ -37,3 +37,11 @@ func _on_button_pressed():
 ## Triggers stardust increment 
 func _on_timer_timeout():
 	create_stardust()
+
+## Watch for nav requests
+func _on_navigation_request(requested_view : UserInterface.Views) -> void:
+	if requested_view == view:
+		visible = true
+		return
+	
+	visible = false

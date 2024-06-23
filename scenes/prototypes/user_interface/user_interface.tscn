@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyxyg16mba6d2"]
+[gd_scene load_steps=5 format=3 uid="uid://cyxyg16mba6d2"]
 
 [ext_resource type="PackedScene" uid="uid://b28eqclkc54u4" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_ig4xk"]
+[ext_resource type="Script" path="res://scenes/prototypes/user_interface/user_interface.gd" id="1_ydm26"]
+[ext_resource type="Script" path="res://scenes/prototypes/user_interface/startdust_label.gd" id="2_u5mx8"]
+[ext_resource type="PackedScene" uid="uid://fa05dr7um1hy" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_jg1vl"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -9,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ydm26")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -49,9 +53,13 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+[node name="PrototypeGeneratorLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Prototype Generator"
+
+[node name="PrototypeClickerLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prototype Clicker"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
@@ -80,9 +88,10 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+[node name="LabelStardust" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Stardust: 15"
+text = "Stardust: 0"
+script = ExtResource("2_u5mx8")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -96,5 +105,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PrototypeGenerator" parent="HBoxContainer/MainMenu" instance=ExtResource("1_ig4xk")]
+[node name="PrototypeClicker" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("3_jg1vl")]
 layout_mode = 1
+user_interface = NodePath("../../..")
+
+[node name="PrototypeGenerator" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("1_ig4xk")]
+layout_mode = 1
+user_interface = NodePath("../../..")
+
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]

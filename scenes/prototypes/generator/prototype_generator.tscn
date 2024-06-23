@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b28eqclkc54u4"]
+[gd_scene load_steps=3 format=3 uid="uid://b28eqclkc54u4"]
 
 [ext_resource type="Script" path="res://scenes/prototypes/generator/prototype_generator.gd" id="1_fu1ew"]
+[ext_resource type="Script" path="res://scenes/prototypes/user_interface/startdust_label.gd" id="2_ounad"]
 
-[node name="PrototypeGenerator" type="Control" node_paths=PackedStringArray("label", "timer", "button")]
+[node name="PrototypeGenerator" type="Control" node_paths=PackedStringArray("timer", "button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu1ew")
-label = NodePath("Label")
 timer = NodePath("Timer")
 button = NodePath("Button")
 
@@ -25,6 +25,7 @@ theme_type_variation = &"HeaderLarge"
 text = "Stardust  : <value>"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("2_ounad")
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(320, 80)
