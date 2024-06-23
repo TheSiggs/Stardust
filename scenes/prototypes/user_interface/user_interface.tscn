@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyxyg16mba6d2"]
+[gd_scene load_steps=7 format=3 uid="uid://cyxyg16mba6d2"]
 
 [ext_resource type="PackedScene" uid="uid://b28eqclkc54u4" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_ig4xk"]
 [ext_resource type="Script" path="res://scenes/prototypes/user_interface/user_interface.gd" id="1_ydm26"]
 [ext_resource type="Script" path="res://scenes/prototypes/user_interface/startdust_label.gd" id="2_u5mx8"]
 [ext_resource type="PackedScene" uid="uid://fa05dr7um1hy" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_jg1vl"]
+[ext_resource type="PackedScene" uid="uid://cvxnswtgf73or" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_icyof"]
+[ext_resource type="Script" path="res://scenes/prototypes/upgrades/prototype_upgrades.gd" id="6_vx85r"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -61,6 +63,10 @@ text = "Prototype Generator"
 layout_mode = 2
 text = "Prototype Clicker"
 
+[node name="PrototypeUpgradesLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prototype Upgrades"
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
@@ -106,12 +112,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="PrototypeClicker" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("3_jg1vl")]
+visible = false
 layout_mode = 1
 user_interface = NodePath("../../..")
 
 [node name="PrototypeGenerator" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("1_ig4xk")]
+visible = false
 layout_mode = 1
+user_interface = NodePath("../../..")
+
+[node name="PrototypeUpgrades" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_icyof")]
+visible = false
+layout_mode = 1
+script = ExtResource("6_vx85r")
+view = 2
 user_interface = NodePath("../../..")
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgradesLink" to="." method="_on_prototype_upgrades_link_pressed"]
