@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyxyg16mba6d2"]
+[gd_scene load_steps=9 format=3 uid="uid://cyxyg16mba6d2"]
 
 [ext_resource type="PackedScene" uid="uid://b28eqclkc54u4" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_ig4xk"]
 [ext_resource type="Script" path="res://scenes/prototypes/user_interface/user_interface.gd" id="1_ydm26"]
 [ext_resource type="Script" path="res://scenes/prototypes/user_interface/startdust_label.gd" id="2_u5mx8"]
+[ext_resource type="Script" path="res://scenes/prototypes/user_interface/consciousness_core_label.gd" id="3_0bgw5"]
 [ext_resource type="PackedScene" uid="uid://fa05dr7um1hy" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_jg1vl"]
 [ext_resource type="PackedScene" uid="uid://cvxnswtgf73or" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_icyof"]
 [ext_resource type="Script" path="res://scenes/prototypes/upgrades/prototype_upgrades.gd" id="6_vx85r"]
+[ext_resource type="PackedScene" uid="uid://dplnkbsvaogsg" path="res://scenes/views/consciousness_core/consciousness_core_view.tscn" id="7_0wvws"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -67,6 +69,10 @@ text = "Prototype Clicker"
 layout_mode = 2
 text = "Prototype Upgrades"
 
+[node name="ConsciousnessCoreLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Consciousness Core"
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
@@ -99,6 +105,10 @@ layout_mode = 2
 text = "Stardust: 0"
 script = ExtResource("2_u5mx8")
 
+[node name="LabelConsciousnessCore" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_0bgw5")
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 16
@@ -128,6 +138,13 @@ script = ExtResource("6_vx85r")
 view = 2
 user_interface = NodePath("../../..")
 
+[node name="ConsciousnessCoreView" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("7_0wvws")]
+visible = false
+layout_mode = 1
+view = 3
+user_interface = NodePath("../../..")
+
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgradesLink" to="." method="_on_prototype_upgrades_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/ConsciousnessCoreLink" to="." method="_on_consciousness_core_link_pressed"]

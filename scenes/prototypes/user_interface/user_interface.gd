@@ -6,7 +6,8 @@ extends Control
 enum Views {
 	PROTOTYPE_GENERATOR,
 	PROTOTYPE_CLICKER,
-	PROTOTYPE_UPGRADES
+	PROTOTYPE_UPGRADES,
+	CONSCIOUSNESS_CORE
 }
 
 ## Emitted when something requests the nav.
@@ -24,3 +25,7 @@ func _on_prototype_clicker_link_pressed() -> void:
 ## Trigered when prototype clicker is ui link is clicked
 func _on_prototype_upgrades_link_pressed() -> void:
 	navigation_requested.emit(Views.PROTOTYPE_UPGRADES)
+
+## Trigered when CONSCIOUSNESS_CORE is ui link is clicked
+func _on_consciousness_core_link_pressed():
+	navigation_requested.emit(Views.CONSCIOUSNESS_CORE)
