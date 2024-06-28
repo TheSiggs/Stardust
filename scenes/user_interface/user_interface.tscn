@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cyxyg16mba6d2"]
 
 [ext_resource type="PackedScene" uid="uid://b28eqclkc54u4" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_ig4xk"]
-[ext_resource type="Script" path="res://scenes/prototypes/user_interface/user_interface.gd" id="1_ydm26"]
+[ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ydm26"]
 [ext_resource type="Script" path="res://scenes/prototypes/user_interface/startdust_label.gd" id="2_u5mx8"]
 [ext_resource type="Script" path="res://scenes/prototypes/user_interface/consciousness_core_label.gd" id="3_0bgw5"]
 [ext_resource type="PackedScene" uid="uid://fa05dr7um1hy" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_jg1vl"]
@@ -100,14 +100,15 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer"]
 layout_mode = 2
 
+[node name="LabelConsciousnessCore" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Consciousness Cores"
+script = ExtResource("3_0bgw5")
+
 [node name="LabelStardust" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Stardust: 0"
 script = ExtResource("2_u5mx8")
-
-[node name="LabelConsciousnessCore" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("3_0bgw5")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2

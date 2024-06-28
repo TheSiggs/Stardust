@@ -8,14 +8,21 @@ static var ref : Game
 ## Game data
 var data  : Data
 
+## Reference to the user interface packed scene
+@export var scene_user_interface : PackedScene
+
 ## Singleton check
-func _singleton_check():
+func _singleton_check() -> void:
 	if not ref:
 		ref = self
 		
 		return
 	queue_free()
 
+
+func _ready() -> void:
+	var node_ui : UserInterface = scene_user_interface.instantiate() as UserInterface
+	add_child(node_ui)
 
 ## Game initialization
 func _enter_tree() -> void:

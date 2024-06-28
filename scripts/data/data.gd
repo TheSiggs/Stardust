@@ -10,3 +10,6 @@ extends Resource
 
 ## Upgrade 01 level
 @export var up_01_level : int = 0
+
+## Contains CCUpgrade data
+@export var cc_upgrades : DataCCUpgrades = DataCCUpgrades.new()
