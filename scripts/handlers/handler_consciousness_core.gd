@@ -18,6 +18,9 @@ signal consciousness_core_created(qty : int)
 ## emitted on consciousness core consumed
 signal consciousness_core_consumed(qty : int)
 
+## Node managing stardust milestones, creating consciouesness cores
+@onready var stardust_milestone : MilestoneStardust = MilestoneStardust.new()
+
 ## Get current amount of CC
 func get_consciousness_core() -> int:
 	return Game.ref.data.consciousness_core
@@ -25,6 +28,7 @@ func get_consciousness_core() -> int:
 ## Get create an amount of CC
 func create_concsiousness_core(qty : int) -> void:
 	Game.ref.data.consciousness_core += qty
+	Game.ref.data.universe.consciousness_core += qty
 	consciousness_core_created.emit(qty)
 
 ## Consume an amount of CC

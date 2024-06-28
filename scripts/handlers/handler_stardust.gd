@@ -26,6 +26,7 @@ func get_stardust() -> int:
 ## Add stardust
 func create_stardust(qty : int) -> void:
 	Game.ref.data.stardust += qty
+	Game.ref.data.universe.stardust += qty
 	stardust_created.emit(qty)
 
 ## Remove stardust
