@@ -42,3 +42,7 @@ func level_up() -> void:
 	leveled_up.emit()
 	HandlerCCUpgrades.ref.upgrade_leveled_up.emit(self)
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.emit(self)
+
+## Returns whether upgrade is unlocked
+func is_unlocked() -> bool:
+	return true

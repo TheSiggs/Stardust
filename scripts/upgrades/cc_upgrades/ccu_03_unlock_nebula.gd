@@ -9,7 +9,8 @@ func _init() -> void:
 	title = "Unlock Nebula"
 	base_cost = 5
 	cost = 5
-
+	if not is_unlocked():
+		HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(_on_ccu01_level_up)
 ## Returns description
 func get_description() -> String:
 	var text : String = "[b]Effects:[/b] Unlocks the ability to create nebula"
@@ -35,3 +36,12 @@ func level_up() -> void:
 	leveled_up.emit()
 	HandlerCCUpgrades.ref.upgrade_leveled_up.emit(self)
 	HandlerCCUpgrades.ref.u_03_unlock_nebula.leveled_up.emit(self)
+
+## Returns whether upgrade is unlocked
+func is_unlocked() -> bool:
+	return Game.ref.data.cc_upgrades.u_01_stardust_generation_level
+
+## Triggered when CCU01 is purchased. Unlocks this upgrade
+func _on_ccu01_level_up() -> void:
+	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(_on_ccu01_level_up)
+	HandlerCCUpgrades.ref.upgrade_unlocked.emit(self)
