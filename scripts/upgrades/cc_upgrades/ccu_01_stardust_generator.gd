@@ -14,7 +14,9 @@ func _init() -> void:
 func get_description() -> String:
 	var text = "Awaken the Universe to start generating Stardust"
 	text += "\n[b]Effect: [/b] Passive Stardust generation"
-	text += "\n[b]Cost:[/b] %s Consciousness Core" % cost
+	if level < max_level:
+		text += "\n[b]Cost:[/b] %s Consciousness Cores" % cost
+
 	return text
 
 ## Returns current cost
@@ -38,4 +40,4 @@ func level_up() -> void:
 	Game.ref.data.cc_upgrades.u_01_stardust_generation_level = true
 	# Increase leel in Data Reasource
 	leveled_up.emit()
-	HandlerCCUpgrades.ref.upgrade_leveled_up.emit(self)
+	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.emit(self)

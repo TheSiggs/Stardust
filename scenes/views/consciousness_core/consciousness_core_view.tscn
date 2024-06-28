@@ -41,5 +41,5 @@ theme_override_constants/margin_right = 16
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CCUpgrades" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="CCUpgrades" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

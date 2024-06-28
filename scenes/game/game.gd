@@ -28,7 +28,7 @@ func _ready() -> void:
 func _enter_tree() -> void:
 	_singleton_check()
 	data = Data.new()
-	SaveSystem.load_data()
+	#SaveSystem.load_data()
 
 ## Save when timer timesout
 func _on_save_timer_timeout():
