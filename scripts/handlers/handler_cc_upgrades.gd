@@ -18,13 +18,15 @@ signal upgrade_leveled_up(upgrade : Upgrade)
 
 ## reference to u_01_stardust_generation
 @onready var u_01_stardust_generation : CCU01StardustGenerator = CCU01StardustGenerator.new()
-
 ## reference to u_02_stardust_boost
 @onready var u_02_stardust_boost : CCu02StardustBoost = CCu02StardustBoost.new()
+## reference to u_03_unlock_nebula
+@onready var u_03_unlock_nebula : CCU03UnlockNebula = CCU03UnlockNebula.new()
 
 ## Returns all cc upgrades
 func get_all_upgrades() -> Array[Upgrade]:
 	return [
 		u_01_stardust_generation,
-		u_02_stardust_boost
+		u_02_stardust_boost,
+		u_03_unlock_nebula
 	]

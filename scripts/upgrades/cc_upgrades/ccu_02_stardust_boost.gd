@@ -30,7 +30,7 @@ func calculate_cost() -> void:
 func can_afford() -> bool:
 	return level < max_level && Game.ref.data.consciousness_core >= cost
 
-## Virtual function - Consumes stardust to level up
+## Virtual function - Consumes CC to level up
 func level_up() -> void:
 	if !can_afford():
 		return
@@ -43,4 +43,4 @@ func level_up() -> void:
 	# Increase leel in Data Reasource
 	leveled_up.emit()
 	HandlerCCUpgrades.ref.upgrade_leveled_up.emit(self)
-	HandlerCCUpgrades.ref.upgrade_leveled_up.emit(self)
+	HandlerCCUpgrades.ref.u_02_stardust_boost.leveled_up.emit(self)

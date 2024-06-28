@@ -7,3 +7,6 @@ extends Resource
 
 ## CCU 02 stardust boost level
 @export var u_02_stardust_boost_level : int = 0
+
+## CCU Unlock nebula
+@export var u_03_unlock_nebula : bool = false
