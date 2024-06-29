@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://70bdm4hwnxyp"]
+[gd_scene load_steps=8 format=3 uid="uid://70bdm4hwnxyp"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_58fwo"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_stardust.gd" id="2_huqmh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/handlers/handler_consciousness_core.gd" id="3_m2omx"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_cc_upgrades.gd" id="4_rsv6m"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_stardust_generator.gd" id="6_xifwb"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_nebula.gd" id="7_ab2rm"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_58fwo")
@@ -27,6 +28,13 @@ script = ExtResource("6_xifwb")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Handlers/StartdustGenerator"]
+
+[node name="Nebula" type="Node" parent="Handlers" node_paths=PackedStringArray("timer")]
+script = ExtResource("7_ab2rm")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Handlers/Nebula"]
+autostart = true
 
 [node name="SaveTimer" type="Timer" parent="."]
 autostart = true

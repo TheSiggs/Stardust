@@ -130,6 +130,7 @@ layout_mode = 1
 user_interface = NodePath("../../..")
 
 [node name="NebulaView" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("7_kywho")]
+visible = false
 layout_mode = 1
 view = 2
 user_interface = NodePath("../../..")
