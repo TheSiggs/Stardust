@@ -67,3 +67,9 @@ func int_to_roman(number: int) -> String:
 			number -= value
 	
 	return roman_numeral
+
+## Virtual function - Returns whether upgrade is disabled
+func is_disabled() -> bool:
+	printerr("level_up not defined")
+	assert(false)
+	return false

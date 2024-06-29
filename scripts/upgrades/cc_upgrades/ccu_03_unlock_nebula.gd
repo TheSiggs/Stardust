@@ -48,3 +48,7 @@ func _on_ccu01_level_up() -> void:
 ## Returns upgrade title
 func title() -> String:
 	return "Unlock Nebula"
+
+## Returns whether upgrade is disabled
+func is_disabled() -> bool:
+	return Game.ref.data.cc_upgrades.u_03_unlock_nebula

@@ -49,3 +49,7 @@ func is_unlocked() -> bool:
 ## Returns upgrade title
 func title() -> String:
 	return "Awaken the Universe"
+
+## Returns whether upgrade is disabled
+func is_disabled() -> bool:
+	return Game.ref.data.cc_upgrades.u_01_stardust_generation_level

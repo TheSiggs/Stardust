@@ -40,3 +40,7 @@ func title() -> String:
 	var text : String = "Clicker Upgrade"
 	text += " %s" % int_to_roman(level)
 	return text
+
+## Virtual function - Returns whether upgrade is disabled
+func is_disabled() -> bool:
+	return false

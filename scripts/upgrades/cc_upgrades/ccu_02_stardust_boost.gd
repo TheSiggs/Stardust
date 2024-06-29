@@ -61,3 +61,7 @@ func title() -> String:
 	var text : String = "Stardust Generator Efficiency"
 	text += " %s" % int_to_roman(level)
 	return text
+
+## Returns whether upgrade is disabled
+func is_disabled() -> bool:
+	return level >= max_level

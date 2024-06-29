@@ -8,6 +8,8 @@ extends Control
 @export var label_description: RichTextLabel
 ## Reference button
 @export var button : Button
+## Reference veil
+@export var veil : ColorRect
 
 ## Upgrade to display
 var upgrade : Upgrade
@@ -20,6 +22,7 @@ func _ready() -> void:
 	update_label_title()
 	update_label_description()
 	update_button()
+	update_veil()
 	
 	HandlerStardust.ref.stardust_created.connect(update_button)
 	HandlerStardust.ref.stardust_consumed.connect(update_button)
@@ -27,6 +30,7 @@ func _ready() -> void:
 	upgrade.leveled_up.connect(update_label_title)
 	upgrade.leveled_up.connect(update_label_description)
 	upgrade.leveled_up.connect(update_button)
+	upgrade.leveled_up.connect(update_veil)
 
 ## Updates title
 func update_label_title() -> void:
@@ -39,6 +43,10 @@ func update_label_description() -> void:
 ## Updated the button availibilty
 func update_button(_qty : int = -1) -> void:
 	button.disabled = not upgrade.can_afford()
+
+## Hides or show veil based on upgrade disabled
+func update_veil() -> void:
+	veil.visible = upgrade.is_disabled()
 
 ## Triggered when purchased button is pressed
 func _on_purchase_button_pressed():
