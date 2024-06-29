@@ -50,18 +50,18 @@ func is_unlocked() -> bool:
 	return false
 
 func int_to_roman(number: int) -> String:
-	var roman_numerals = {
+	var roman_numerals : Dictionary = {
 		1000: "M", 900: "CM", 500: "D", 400: "CD",
 		100: "C", 90: "XC", 50: "L", 40: "XL",
 		10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I"
 	}
 	
-	var sorted_keys = roman_numerals.keys()
+	var sorted_keys : Array = roman_numerals.keys()
 	sorted_keys.sort()
 	sorted_keys.reverse()
-	var roman_numeral = ""
+	var roman_numeral : String = ""
 	
-	for value in sorted_keys:
+	for value : int in sorted_keys:
 		while number >= value:
 			roman_numeral += roman_numerals[value]
 			number -= value

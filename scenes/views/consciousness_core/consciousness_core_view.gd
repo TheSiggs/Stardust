@@ -21,7 +21,7 @@ func _on_upgrade_unlocked(_upgrade : Upgrade) -> void:
 	var current_upgrades : Array[Upgrade] = []
 	
 	for current_upgrade_node : Node in ccu_area.get_children():
-		var upgrade = current_upgrade_node.upgrade
+		var upgrade : Upgrade = current_upgrade_node.upgrade as Upgrade
 		current_upgrades.append(upgrade)
 	
 	for upgrade : Upgrade in HandlerCCUpgrades.ref.get_all_unlocked_upgrades():

@@ -16,9 +16,6 @@ var upgrade : Upgrade
 
 
 func _ready() -> void:
-	if not upgrade:
-		upgrade = Up01ClickerUpgrade.new()
-	
 	update_component()
 	
 	if not upgrade.is_disabled():
@@ -49,7 +46,7 @@ func update_veil() -> void:
 	veil.visible = upgrade.is_disabled()
 
 ## Triggered when purchased button is pressed
-func _on_purchase_button_pressed():
+func _on_purchase_button_pressed() -> void:
 	upgrade.level_up()
 
 ## Update component and disconnect signals on disabled

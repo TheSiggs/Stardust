@@ -18,4 +18,4 @@ func _update_stardust_per_second() -> void:
 
 ## Triggered on generator_power_calculated signal emitted
 func _on_stardust_generator_power_calculated() -> void:
-	_update_stardust_per_second
+	_update_stardust_per_second()

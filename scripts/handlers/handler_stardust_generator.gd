@@ -32,15 +32,15 @@ func _ready() -> void:
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(watch_for_ccu01_level_up)
 
 ## Triggered when an upgrade levels up. Recalculates generator power
-func watch_for_upgrades_level_up(upgrade : Upgrade) -> void:
+func watch_for_upgrades_level_up(_upgrade : Upgrade) -> void:
 	calculate_generated_power()
 
 ## Triggered when timer completes loop
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	HandlerStardust.ref.create_stardust(generator_power)
 
 ## wait for ccu_01 being purchased
-func watch_for_ccu01_level_up(upgrade : Upgrade) -> void:
+func watch_for_ccu01_level_up(_upgrade : Upgrade) -> void:
 	timer.start()
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(watch_for_ccu01_level_up)
 

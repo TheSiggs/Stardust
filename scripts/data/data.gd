@@ -8,9 +8,6 @@ extends Resource
 ## Current amount of consciousness cores available
 @export var consciousness_core : int = 100
 
-## Upgrade 01 level
-@export var up_01_level : int = 0
-
 ## Contains CCUpgrade data
 @export var cc_upgrades : DataCCUpgrades = DataCCUpgrades.new()
 

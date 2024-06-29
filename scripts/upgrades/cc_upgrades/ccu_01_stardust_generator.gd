@@ -11,7 +11,7 @@ func _init() -> void:
 
 ## Returns description
 func get_description() -> String:
-	var text = "Awaken the Universe to start generating Stardust"
+	var text : String = "Awaken the Universe to start generating Stardust"
 	text += "\n[b]Effect: [/b] Passive Stardust generation"
 	if level < max_level:
 		text += "\n[b]Cost:[/b] %s Consciousness Cores" % cost
