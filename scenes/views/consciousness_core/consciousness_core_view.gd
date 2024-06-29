@@ -29,6 +29,6 @@ func _on_upgrade_unlocked(_upgrade : Upgrade) -> void:
 			create_upgrade_node(upgrade)
 
 func create_upgrade_node(upgrade : Upgrade) -> void:
-	var upgradeNode : CompoUpgrade = load("res://scenes/prototypes/upgrades/componenets/compo_upgrade.tscn").instantiate() as CompoUpgrade
+	var upgradeNode : CompoUpgrade = load("res://scenes/components/upgrade/compo_upgrade.tscn").instantiate() as CompoUpgrade
 	upgradeNode.upgrade = upgrade
 	ccu_area.add_child(upgradeNode)

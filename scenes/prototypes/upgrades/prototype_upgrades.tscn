@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvxnswtgf73or"]
 
-[ext_resource type="PackedScene" uid="uid://c31bw1ww5bl4e" path="res://scenes/prototypes/upgrades/componenets/compo_upgrade.tscn" id="1_g4i3h"]
+[ext_resource type="PackedScene" uid="uid://c31bw1ww5bl4e" path="res://scenes/components/upgrade/compo_upgrade.tscn" id="1_g4i3h"]
 
 [node name="PrototypeUpgrades" type="Control"]
 layout_mode = 3
