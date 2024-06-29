@@ -19,18 +19,18 @@ func _ready() -> void:
 	if not upgrade:
 		upgrade = Up01ClickerUpgrade.new()
 	
+	update_component()
+	
+	if not upgrade.is_disabled():
+		HandlerStardust.ref.stardust_created.connect(_on_upgrade_level_up)
+		HandlerStardust.ref.stardust_consumed.connect(_on_upgrade_level_up)
+		upgrade.leveled_up.connect(_on_upgrade_level_up)
+
+func update_component() -> void:
 	update_label_title()
 	update_label_description()
 	update_button()
 	update_veil()
-	
-	HandlerStardust.ref.stardust_created.connect(update_button)
-	HandlerStardust.ref.stardust_consumed.connect(update_button)
-	
-	upgrade.leveled_up.connect(update_label_title)
-	upgrade.leveled_up.connect(update_label_description)
-	upgrade.leveled_up.connect(update_button)
-	upgrade.leveled_up.connect(update_veil)
 
 ## Updates title
 func update_label_title() -> void:
@@ -51,3 +51,11 @@ func update_veil() -> void:
 ## Triggered when purchased button is pressed
 func _on_purchase_button_pressed():
 	upgrade.level_up()
+
+## Update component and disconnect signals on disabled
+func _on_upgrade_level_up() -> void:
+	update_component()
+	if upgrade.is_disabled():
+		HandlerStardust.ref.stardust_created.disconnect(update_button)
+		HandlerStardust.ref.stardust_consumed.disconnect(update_button)
+		upgrade.leveled_up.disconnect(update_component)
