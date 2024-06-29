@@ -10,8 +10,7 @@ signal upgrade_unlocked
 
 ## Upgrade level
 var level : int = -1
-## Upgrade name
-var title : String = "Not Defined"
+
 ## Upgrade description
 var description : String
 ## Upgrade initial cost
@@ -19,6 +18,10 @@ var base_cost : int = -1
 ## Current cost of upgrade
 var cost : int = -1
 
+
+## Virtual function - returns upgrade title
+func title() -> String:
+	return "Title not found"
 
 ## Virtual function - returns description
 func get_description() -> String:
@@ -45,3 +48,22 @@ func is_unlocked() -> bool:
 	printerr("is_unlocked not defined")
 	assert(false)
 	return false
+
+func int_to_roman(number: int) -> String:
+	var roman_numerals = {
+		1000: "M", 900: "CM", 500: "D", 400: "CD",
+		100: "C", 90: "XC", 50: "L", 40: "XL",
+		10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I"
+	}
+	
+	var sorted_keys = roman_numerals.keys()
+	sorted_keys.sort()
+	sorted_keys.reverse()
+	var roman_numeral = ""
+	
+	for value in sorted_keys:
+		while number >= value:
+			roman_numeral += roman_numerals[value]
+			number -= value
+	
+	return roman_numeral

@@ -6,7 +6,6 @@ var max_level : int = 1
 
 func _init() -> void:
 	level = Game.ref.data.cc_upgrades.u_03_unlock_nebula
-	title = "Unlock Nebula"
 	base_cost = 5
 	cost = 5
 	if not is_unlocked():
@@ -45,3 +44,7 @@ func is_unlocked() -> bool:
 func _on_ccu01_level_up() -> void:
 	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(_on_ccu01_level_up)
 	HandlerCCUpgrades.ref.upgrade_unlocked.emit(self)
+
+## Returns upgrade title
+func title() -> String:
+	return "Unlock Nebula"

@@ -5,7 +5,7 @@ extends Upgrade
 ## Load upgrade data
 func _init() -> void: 
 	level = Game.ref.data.up_01_level
-	title = "Clicker Upgrade"
+
 	base_cost = 5
 	description = get_description()
 	calculate_cost()
@@ -34,3 +34,9 @@ func level_up() -> void:
 		Game.ref.data.up_01_level = level
 		calculate_cost()
 		leveled_up.emit()
+
+## Returns upgrade title
+func title() -> String:
+	var text : String = "Clicker Upgrade"
+	text += " %s" % int_to_roman(level)
+	return text

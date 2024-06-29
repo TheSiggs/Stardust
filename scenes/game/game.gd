@@ -15,7 +15,6 @@ var data  : Data
 func _singleton_check() -> void:
 	if not ref:
 		ref = self
-		
 		return
 	queue_free()
 

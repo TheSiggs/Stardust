@@ -30,7 +30,7 @@ func _ready() -> void:
 
 ## Updates title
 func update_label_title() -> void:
-	label_title.text = upgrade.title + " (%s)" % upgrade.level
+	label_title.text = upgrade.title()
 
 ## Updates description
 func update_label_description() -> void:
