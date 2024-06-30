@@ -20,6 +20,10 @@ func _enter_tree() -> void:
 
 signal nebula_created
 
+signal nebula_effect_updated
+
+signal effect_stardust_consumption_updated
+
 ## Reference to the timer
 @export var timer : Timer
 
@@ -38,6 +42,12 @@ var max_attraction_value : int = 5
 var min_release_value : int = 1
 ## Nebula Maximum release value 
 var max_release_value : int = 5
+
+## Total stardust generation effect
+var effect_stardust_generation : int = 0
+
+## Amount of stardust being consumed by all Nebula
+var effect_stardust_consumed : int = 0
 
 ## load nebula
 func _ready() -> void:
@@ -62,6 +72,8 @@ func load_nebula() -> void:
 		
 		nebula.append(new_nebula)
 		index += 1
+	
+	calculate_effect_stardust_consumed()
 
 ## Get list of nebula
 func get_all_nebula() -> Array[Nebula]:
@@ -85,6 +97,8 @@ func create_nebula() -> Error:
 	data_nebula.attraction_value = new_nebula.attraction_value
 	Game.ref.data.nebula.append(data_nebula)
 	
+	calculate_effect_stardust_consumed()
+	
 	nebula_created.emit()
 	return Error.OK
 
@@ -93,9 +107,35 @@ func create_nebula() -> Error:
 func update_nebula_stardust_attraction_value(index : int, value : int) -> void:
 	nebula[index].attraction_value = value
 	Game.ref.data.nebula[index].attraction_value = value
+	
+	calculate_effect_stardust_consumed()
 
 
 ## Updates the ionized stardust release value of a single Nebula
 func update_nebula_release_value(index : int, value : int) -> void:
 	nebula[index].release_value = value
 	Game.ref.data.nebula[index].release_value = value
+
+## Cumulates all nebula effects into single prop
+func calculate_nebula_effect_stardust_generation() -> void:
+	var old_effect : int = effect_stardust_generation
+	var new_effect : int = 0
+	for this_nebula : Nebula in nebula:
+		new_effect += this_nebula.effect_stardust_generation
+	
+	effect_stardust_generation = new_effect
+	
+	if new_effect != old_effect:
+		nebula_effect_updated.emit()
+
+## calculates total stardust consumption rate
+func calculate_effect_stardust_consumed() -> void:
+	var old_effect : int = effect_stardust_consumed
+	var new_effect : int = 0
+	for this_nebula : Nebula in nebula:
+		new_effect += this_nebula.attraction_value
+	
+	effect_stardust_consumed = new_effect
+	
+	if effect_stardust_consumed != old_effect:
+		effect_stardust_consumption_updated.emit()

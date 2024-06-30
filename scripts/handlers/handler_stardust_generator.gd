@@ -25,6 +25,7 @@ signal generator_power_calculated
 func _ready() -> void:
 	calculate_generated_power()
 	HandlerCCUpgrades.ref.upgrade_leveled_up.connect(watch_for_upgrades_level_up)
+	HandlerNebula.ref.nebula_effect_updated.connect(_on_nebula_effect_updated)
 	
 	if Game.ref.data.cc_upgrades.u_01_stardust_generation_level:
 		timer.start()
@@ -39,6 +40,9 @@ func watch_for_upgrades_level_up(_upgrade : Upgrade) -> void:
 func _on_timer_timeout() -> void:
 	HandlerStardust.ref.create_stardust(generator_power)
 
+func _on_nebula_effect_updated() -> void:
+	calculate_generated_power()
+
 ## wait for ccu_01 being purchased
 func watch_for_ccu01_level_up(_upgrade : Upgrade) -> void:
 	timer.start()
@@ -48,6 +52,7 @@ func watch_for_ccu01_level_up(_upgrade : Upgrade) -> void:
 func calculate_generated_power() -> void:
 	var new_power : int = 1
 	new_power += Game.ref.data.cc_upgrades.u_02_stardust_boost_level
+	new_power += HandlerNebula.ref.effect_stardust_generation
 	generator_power = new_power
 	
 	generator_power_calculated.emit()
