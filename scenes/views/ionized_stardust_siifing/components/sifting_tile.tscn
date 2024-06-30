@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://84x1dg0b0h4t"]
+
+[ext_resource type="Texture2D" uid="uid://d3hdj1copwhcy" path="res://assets/Tile.png" id="1_218vf"]
+[ext_resource type="Script" path="res://scenes/views/ionized_stardust_siifing/components/sifting_tile.gd" id="2_d51iw"]
+[ext_resource type="Texture2D" uid="uid://4qmtcyqnw6wu" path="res://assets/CoveredTile.png" id="3_0ut3b"]
+[ext_resource type="Texture2D" uid="uid://cnfd64mha4tus" path="res://assets/sparkles.png" id="4_r18l1"]
+[ext_resource type="Texture2D" uid="uid://bkvg05qebk4nx" path="res://assets/minerals.png" id="5_3bmr7"]
+
+[node name="SiftingTile" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_218vf")
+texture_pressed = ExtResource("1_218vf")
+texture_hover = ExtResource("1_218vf")
+texture_disabled = ExtResource("1_218vf")
+texture_focused = ExtResource("1_218vf")
+script = ExtResource("2_d51iw")
+texture_covered = ExtResource("3_0ut3b")
+texture_empty = ExtResource("1_218vf")
+texture_stardust = ExtResource("4_r18l1")
+texture_cc = ExtResource("5_3bmr7")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
