@@ -118,5 +118,12 @@ layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "5"
 
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_bottom = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer3"]
+layout_mode = 2
+
 [connection signal="value_changed" from="MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer/HBoxContainer/AttractionSlider" to="." method="_on_attraction_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer/HBoxContainer/ReleaseSlider" to="." method="_on_release_slider_value_changed"]

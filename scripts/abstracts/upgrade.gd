@@ -21,6 +21,7 @@ var cost : int = -1
 
 ## Virtual function - returns upgrade title
 func title() -> String:
+	assert(false)
 	return "Title not found"
 
 ## Virtual function - returns description
@@ -49,6 +50,12 @@ func is_unlocked() -> bool:
 	assert(false)
 	return false
 
+## Virtual function - Returns whether upgrade is disabled
+func is_disabled() -> bool:
+	printerr("level_up not defined")
+	assert(false)
+	return false
+
 func int_to_roman(number: int) -> String:
 	var roman_numerals : Dictionary = {
 		1000: "M", 900: "CM", 500: "D", 400: "CD",
@@ -67,9 +74,3 @@ func int_to_roman(number: int) -> String:
 			number -= value
 	
 	return roman_numeral
-
-## Virtual function - Returns whether upgrade is disabled
-func is_disabled() -> bool:
-	printerr("level_up not defined")
-	assert(false)
-	return false

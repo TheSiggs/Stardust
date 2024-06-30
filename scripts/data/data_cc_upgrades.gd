@@ -8,5 +8,8 @@ extends Resource
 ## CCU 02 stardust boost level
 @export var u_02_stardust_boost_level : int = 0
 
-## CCU Unlock nebula
+## CCU 03 Unlock nebula
 @export var u_03_unlock_nebula : bool = false
+
+## CCU 04 Max Nebula Creation Cap
+@export var u_04_max_nebula_level : int = 0

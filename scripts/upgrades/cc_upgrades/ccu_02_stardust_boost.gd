@@ -25,8 +25,7 @@ func get_description() -> String:
 
 ## Returns current cost
 func calculate_cost() -> void:
-	printerr("Calculate cost not defined")
-	assert(false)
+	cost = 1 
 
 ## Virtual function - Calculates whether an upgrade is able to be purchased
 func can_afford() -> bool:
@@ -41,7 +40,8 @@ func level_up() -> void:
 		return
 	
 	level += 1
-	Game.ref.data.cc_upgrades.u_02_stardust_boost_level = true
+	Game.ref.data.cc_upgrades.u_02_stardust_boost_level = level
+	calculate_cost()
 	# Increase leel in Data Reasource
 	leveled_up.emit()
 	HandlerCCUpgrades.ref.upgrade_leveled_up.emit(self)

@@ -5,7 +5,8 @@ extends Node
 signal composition_updated
 
 ## Name of the nebula
-var given_name : String = "Unnamed Nebula"
+var given_name : String = generate_placeholder()
+
 ## Amount of stardust inside nebula
 var stardust : int = 0
 
@@ -110,3 +111,10 @@ func _on_nebula_timer_timeout() -> void:
 	attract_stardust()
 	refine_stardust()
 	release_ionized_stardust()
+
+## Generate a placeholder name from the list
+func generate_placeholder() -> String:
+	var index : int = randi() % Game.ref.data.placeholder_names.size()
+	var placeholder_name : String = Game.ref.data.placeholder_names[index]
+	Game.ref.data.placeholder_names.remove_at(index)
+	return placeholder_name

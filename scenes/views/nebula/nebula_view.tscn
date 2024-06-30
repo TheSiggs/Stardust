@@ -46,7 +46,6 @@ layout_mode = 2
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 64
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
@@ -73,8 +72,6 @@ text = "Create a New Nebula"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/MainList"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/MainList/MarginContainer"]
 layout_mode = 2
