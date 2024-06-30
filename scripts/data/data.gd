@@ -6,7 +6,7 @@ extends Resource
 @export var stardust : int = 0
 
 ## Current amount of consciousness cores available
-@export var consciousness_core : int = 10
+@export var consciousness_core : int = 1
 
 ## Current amount of ionized stardust
 @export var ionized_stardust : int = 0
