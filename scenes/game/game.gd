@@ -30,5 +30,5 @@ func _enter_tree() -> void:
 	SaveSystem.load_data()
 
 ## Save when timer timesout
-func _on_save_timer_timeout():
+func _on_save_timer_timeout() -> void:
 	SaveSystem.save_data()

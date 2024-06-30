@@ -5,6 +5,9 @@ extends Resource
 ## Total amount of stardust created in this universe
 @export var stardust : int = 0
 
+## Total amount of ionized stardust created in this universe
+@export var ionized_stardust : int = 0
+
 ## Total amount of CC in the universe
 @export var consciousness_core : int = 0
 

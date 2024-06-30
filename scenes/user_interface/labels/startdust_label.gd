@@ -10,4 +10,8 @@ func _ready() -> void:
 
 ## Updates stardust text
 func update_text(_qty : int = -1) -> void:
-	text = "Stardust : %s" % HandlerStardust.ref.get_stardust()
+	var stardust : int = HandlerStardust.ref.get_stardust()
+	if stardust:
+		text = "Stardust Stardust : %s" % stardust
+	else:
+		text = ""

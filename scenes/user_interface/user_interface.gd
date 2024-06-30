@@ -24,5 +24,5 @@ func _on_consciousness_core_link_pressed() -> void:
 func _on_universe_link_pressed() -> void:
 	navigation_requested.emit(Views.UNIVERSE)
 
-func _on_nebula_link_pressed():
+func _on_nebula_link_pressed() -> void:
 	navigation_requested.emit(Views.NEBULA)

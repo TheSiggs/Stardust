@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/views/nebula/component/nebula/compo_nebula.gd" id="1_xxs2k"]
 
-[node name="Nebula" type="VBoxContainer" node_paths=PackedStringArray("label_name", "label_composition", "consumption_slider")]
+[node name="Nebula" type="VBoxContainer" node_paths=PackedStringArray("label_name", "label_composition", "attraction_slider", "release_slider")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 125.0
@@ -11,7 +11,8 @@ theme_override_constants/separation = 16
 script = ExtResource("1_xxs2k")
 label_name = NodePath("NebulaName")
 label_composition = NodePath("MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer/Compisition")
-consumption_slider = NodePath("MarginContainer2/VBoxContainer/Attraction Container/VBoxContainer/HBoxContainer/HSlider")
+attraction_slider = NodePath("MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer/HBoxContainer/AttractionSlider")
+release_slider = NodePath("MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer/HBoxContainer/ReleaseSlider")
 
 [node name="NebulaName" type="Label" parent="."]
 layout_mode = 2
@@ -50,26 +51,26 @@ bbcode_enabled = true
 text = "Stardust: no_val"
 fit_content = true
 
-[node name="Attraction Container" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+[node name="StardustAttractionContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/Attraction Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/StardustAttractionContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/Attraction Container/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Stardust Attraction:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/Attraction Container/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Min" type="Label" parent="MarginContainer2/VBoxContainer/Attraction Container/VBoxContainer/HBoxContainer"]
+[node name="Min" type="Label" parent="MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "1"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer2/VBoxContainer/Attraction Container/VBoxContainer/HBoxContainer"]
+[node name="AttractionSlider" type="HSlider" parent="MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -78,9 +79,44 @@ max_value = 5.0
 value = 1.0
 scrollable = false
 
-[node name="Max" type="Label" parent="MarginContainer2/VBoxContainer/Attraction Container/VBoxContainer/HBoxContainer"]
+[node name="Max" type="Label" parent="MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "5"
 
-[connection signal="value_changed" from="MarginContainer2/VBoxContainer/Attraction Container/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[node name="IonizedStardustReleasedContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Ionized Stardust Release:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Min" type="Label" parent="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "1"
+
+[node name="ReleaseSlider" type="HSlider" parent="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+scrollable = false
+
+[node name="Max" type="Label" parent="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "5"
+
+[connection signal="value_changed" from="MarginContainer2/VBoxContainer/StardustAttractionContainer/VBoxContainer/HBoxContainer/AttractionSlider" to="." method="_on_attraction_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer2/VBoxContainer/IonizedStardustReleasedContainer/VBoxContainer/HBoxContainer/ReleaseSlider" to="." method="_on_release_slider_value_changed"]
