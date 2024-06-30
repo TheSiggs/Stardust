@@ -6,7 +6,8 @@ extends Control
 enum Views {
 	UNIVERSE,
 	CONSCIOUSNESS_CORE,
-	NEBULA
+	NEBULA,
+	SIFTING
 }
 
 ## Emitted when something requests the nav.
@@ -26,3 +27,6 @@ func _on_universe_link_pressed() -> void:
 
 func _on_nebula_link_pressed() -> void:
 	navigation_requested.emit(Views.NEBULA)
+
+func _on_sifting_link_pressed():
+	navigation_requested.emit(Views.SIFTING)

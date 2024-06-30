@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyxyg16mba6d2"]
+[gd_scene load_steps=10 format=3 uid="uid://cyxyg16mba6d2"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ydm26"]
 [ext_resource type="Script" path="res://scenes/user_interface/labels/consciousness_core_label.gd" id="2_euvkm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dplnkbsvaogsg" path="res://scenes/views/consciousness_core/consciousness_core_view.tscn" id="7_0wvws"]
 [ext_resource type="PackedScene" uid="uid://b6hsowpnir5je" path="res://scenes/views/nebula/nebula_view.tscn" id="7_kywho"]
 [ext_resource type="PackedScene" uid="uid://y3cqwmnf8e4x" path="res://scenes/views/universe/universe_view.tscn" id="9_2qyo5"]
+[ext_resource type="PackedScene" uid="uid://cb7ilix8hbqg0" path="res://scenes/views/ionized_stardust_siifing/ionized_stardust_sifting_view.tscn" id="9_3kr4q"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -69,6 +70,10 @@ text = "Consciousness Core"
 layout_mode = 2
 text = "Nebula"
 script = ExtResource("2_grh8v")
+
+[node name="SiftingLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stardust Sifting"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
@@ -136,11 +141,17 @@ layout_mode = 1
 user_interface = NodePath("../../..")
 
 [node name="NebulaView" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("7_kywho")]
-visible = false
 layout_mode = 1
 view = 2
+user_interface = NodePath("../../..")
+
+[node name="IonizedStardustSiftingView" parent="HBoxContainer/MainMenu" node_paths=PackedStringArray("user_interface") instance=ExtResource("9_3kr4q")]
+visible = false
+layout_mode = 1
+view = 3
 user_interface = NodePath("../../..")
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/UniverseLink" to="." method="_on_universe_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/ConsciousnessCoreLink" to="." method="_on_consciousness_core_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/NebulaLink" to="." method="_on_nebula_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/SiftingLink" to="." method="_on_sifting_link_pressed"]

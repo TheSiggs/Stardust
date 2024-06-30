@@ -1,5 +1,5 @@
 class_name ViewSiftingMinigame
-extends Control
+extends View
 ## Ionized Stardust Sifting Minigame view
 
 ## Reference to the PackedScene containing a tile
@@ -10,6 +10,7 @@ extends Control
 
 ## Init the view
 func _ready() -> void:
+	super()
 	generate_tiles()
 
 ## Generate tiles for the minigame
@@ -26,3 +27,12 @@ func generate_tiles() -> void:
 			
 			$IonizedMiniGameGridContainer.add_child(node)
 			tiles[key] = node
+
+func reset_tiles() -> void:
+	for key : String in tiles:
+		@warning_ignore("unsafe_method_access")
+		tiles.get(key).init()
+
+
+func _on_button_pressed() -> void:
+	reset_tiles()

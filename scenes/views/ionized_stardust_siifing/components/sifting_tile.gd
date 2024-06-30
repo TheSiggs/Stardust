@@ -28,13 +28,13 @@ var state : Tiles
 var texture : TextureRect
 
 func _ready() -> void:
-	state = Tiles.COVERED
-	texture = get_node("Texture") 
-	texture.texture = texture_covered
+	init()
 
 
 func _on_pressed() -> void:
-	print("Coords: %s, %s" % [x_coord, y_coord])
+	var error : Error = HandlerIonizedStardust.ref.consume_ionized_stardust(1)
+	if error:
+		return
 	reveal_tile()
 
 
@@ -45,9 +45,17 @@ func reveal_tile() -> void:
 	if roll <= 20:
 		state = Tiles.STARDUST
 		texture.texture = texture_stardust
-	elif roll > 95 && roll <= 100:
+		var stardust_found : int = randi_range(1, 5)
+		HandlerStardust.ref.create_stardust(stardust_found)
+	elif roll > 98 && roll <= 100:
 		state = Tiles.CONSCIOUSNESS_CORE
 		texture.texture = texture_cc
+		HandlerConsciousnessCore.ref.create_concsiousness_core(1)
 	else:
 		state = Tiles.EMPTY
 		texture.texture = texture_empty
+
+func init() -> void:
+	state = Tiles.COVERED
+	texture = get_node("Texture") 
+	texture.texture = texture_covered
