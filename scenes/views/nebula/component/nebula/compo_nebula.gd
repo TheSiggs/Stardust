@@ -28,7 +28,7 @@ func update_label_name() -> void:
 	label_name.text = nebula.given_name
 
 func update_label_composition() -> void:
-	var text = "[b]Stardust: [/b] %s" % nebula.stardust
+	var text = "Stardust: %s" % nebula.stardust
 	label_composition.text = text
 
 func update_slider() -> void:

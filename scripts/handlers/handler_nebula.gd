@@ -26,6 +26,9 @@ signal nebula_created
 ## List of Nebula
 var nebula : Array[Nebula] = []
 
+## Maximum amount of nebulas which can exist
+var max_nebula_count : int = 1
+
 ## load nebula
 func _ready() -> void:
 	pass
@@ -54,7 +57,10 @@ func get_all_nebula() -> Array[Nebula]:
 
 
 ## Create a new nebula and add it to the list
-func create_nebula() -> void:
+func create_nebula() -> Error:
+	if nebula.size() >= max_nebula_count:
+		return Error.FAILED
+	
 	var new_nebula : Nebula = Nebula.new()
 	new_nebula.data_index = nebula.size()
 	
@@ -68,6 +74,7 @@ func create_nebula() -> void:
 	Game.ref.data.nebula.append(data_nebula)
 	
 	nebula_created.emit()
+	return Error.OK
 
 
 ## Updates the stardust consumption value of a single Nebula

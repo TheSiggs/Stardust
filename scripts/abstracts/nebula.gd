@@ -9,7 +9,7 @@ var given_name : String = "Unnamed Nebula"
 ## Amount of stardust inside nebula
 var stardust : int = 0
 ## How much the nebula will consume per second
-var stardust_consumes : int = 0
+var stardust_consumes : int = 1
 ## Index of the nebula data
 var data_index : int = -1
 

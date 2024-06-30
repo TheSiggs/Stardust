@@ -43,9 +43,7 @@ text = "Conscious Core Upgrades"
 texture_filter = 4
 layout_mode = 2
 tooltip_text = "Consciousness Cores can be obtained by stardust
-
 Each new Consciousness Core requires more Stardust to be generated
-
 Consciousness Cores can be spent to be upgrades which affect the whole universe!"
 texture = ExtResource("2_s8673")
 expand_mode = 2
