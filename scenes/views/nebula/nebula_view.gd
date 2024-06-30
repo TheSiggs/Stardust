@@ -11,6 +11,7 @@ extends View
 ## Reference of the handler
 @onready var handler : HandlerNebula = HandlerNebula.ref
 
+## References Create Nebula Button
 @export var create_nebula_button : Button
 
 ## Init the view settings

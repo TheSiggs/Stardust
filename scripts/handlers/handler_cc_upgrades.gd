@@ -40,9 +40,20 @@ func get_all_upgrades() -> Array[Upgrade]:
 		u_05_attraction_power
 	]
 
+
+## Gets all unlocked upgrades
 func get_all_unlocked_upgrades() -> Array[Upgrade]:
 	var unlocked_upgrades : Array[Upgrade] = []
 	for upgrade : Upgrade in get_all_upgrades():
 		if upgrade.is_unlocked():
 			unlocked_upgrades.append(upgrade)
 	return unlocked_upgrades
+
+## Gets all upgrades which are avaiable and able to be bought
+func get_all_available_upgrades() -> Array[Upgrade]:
+	var available_upgrade : Array[Upgrade] = []
+	
+	for upgrade : Upgrade in get_all_unlocked_upgrades():
+		if !upgrade.is_max_level():
+			available_upgrade.append(upgrade)
+	return available_upgrade

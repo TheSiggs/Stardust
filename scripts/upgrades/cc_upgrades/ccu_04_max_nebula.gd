@@ -2,13 +2,12 @@ class_name CCU04MaxNebula
 extends Upgrade
 ## Increases the max amount of Nebula the players can create
 
-var max_level : int = 3
 
 func _init() -> void:
 	level = Game.ref.data.cc_upgrades.u_04_max_nebula_level
 	base_cost = 2
 	cost = 2
-	
+	max_level = 3
 	if not is_unlocked():
 		HandlerCCUpgrades.ref.u_03_unlock_nebula.leveled_up.connect(_on_ccu03_level_up)
 
@@ -68,6 +67,3 @@ func is_disabled() -> bool:
 func _on_ccu03_level_up() -> void:
 	HandlerCCUpgrades.ref.u_03_unlock_nebula.leveled_up.disconnect(_on_ccu03_level_up)
 	HandlerCCUpgrades.ref.upgrade_unlocked.emit(self)
-
-func is_max_level() -> bool:
-	return level >= max_level

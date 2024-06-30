@@ -18,6 +18,7 @@ var base_cost : int = -1
 ## Current cost of upgrade
 var cost : int = -1
 
+var max_level : int = 1
 
 ## Virtual function - returns upgrade title
 func title() -> String:
@@ -74,3 +75,6 @@ func int_to_roman(number: int) -> String:
 			number -= value
 	
 	return roman_numeral
+
+func is_max_level() -> bool:
+	return level >= max_level
