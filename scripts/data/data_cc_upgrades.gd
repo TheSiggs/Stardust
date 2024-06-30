@@ -13,3 +13,6 @@ extends Resource
 
 ## CCU 04 Max Nebula Creation Cap
 @export var u_04_max_nebula_level : int = 0
+
+## CCU 05 Stardust Attraction Power
+@export var u_05_attraction_power : int = 0

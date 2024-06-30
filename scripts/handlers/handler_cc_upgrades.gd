@@ -27,6 +27,8 @@ signal upgrade_unlocked(upgrde : Upgrade)
 @onready var u_03_unlock_nebula : CCU03UnlockNebula = CCU03UnlockNebula.new()
 ## Reference to u_04_max_nebula
 @onready var u_04_max_nebula_level : CCU04MaxNebula = CCU04MaxNebula.new()
+## Reference to u_05_attraction_power
+@onready var u_05_attraction_power : CCU05AttractionPower = CCU05AttractionPower.new()
 
 ## Returns all cc upgrades
 func get_all_upgrades() -> Array[Upgrade]:
@@ -34,7 +36,8 @@ func get_all_upgrades() -> Array[Upgrade]:
 		u_01_stardust_generation,
 		u_02_stardust_boost,
 		u_03_unlock_nebula,
-		u_04_max_nebula_level
+		u_04_max_nebula_level,
+		u_05_attraction_power
 	]
 
 func get_all_unlocked_upgrades() -> Array[Upgrade]:
