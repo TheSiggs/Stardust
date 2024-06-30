@@ -16,3 +16,6 @@ extends Resource
 
 ## CCU 05 Stardust Attraction Power
 @export var u_05_attraction_power : int = 0
+
+## CCU 06 Unlock Sifting
+@export var u_06_unlock_sifting : bool = false

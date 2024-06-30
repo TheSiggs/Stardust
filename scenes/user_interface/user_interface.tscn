@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyxyg16mba6d2"]
+[gd_scene load_steps=11 format=3 uid="uid://cyxyg16mba6d2"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ydm26"]
 [ext_resource type="Script" path="res://scenes/user_interface/labels/consciousness_core_label.gd" id="2_euvkm"]
 [ext_resource type="Script" path="res://scenes/user_interface/nebula_link_button.gd" id="2_grh8v"]
+[ext_resource type="Script" path="res://scenes/user_interface/sifting_link.gd" id="3_6nhpf"]
 [ext_resource type="Script" path="res://scenes/user_interface/labels/startdust_label.gd" id="3_a1qx4"]
 [ext_resource type="Script" path="res://scenes/user_interface/ionized_stardust_label.gd" id="5_scdde"]
 [ext_resource type="PackedScene" uid="uid://dplnkbsvaogsg" path="res://scenes/views/consciousness_core/consciousness_core_view.tscn" id="7_0wvws"]
@@ -74,6 +75,7 @@ script = ExtResource("2_grh8v")
 [node name="SiftingLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Stardust Sifting"
+script = ExtResource("3_6nhpf")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2

@@ -9,7 +9,7 @@ extends Resource
 @export var consciousness_core : int = 10
 
 ## Current amount of ionized stardust
-@export var ionized_stardust : int = 50
+@export var ionized_stardust : int = 0
 
 ## Contains CCUpgrade data
 @export var cc_upgrades : DataCCUpgrades = DataCCUpgrades.new()

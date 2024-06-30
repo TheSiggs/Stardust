@@ -19,6 +19,8 @@ func _ready() -> void:
 	update_component()
 	
 	if not upgrade.is_disabled():
+		HandlerConsciousnessCore.ref.consciousness_core_created.connect(_on_upgrade_level_up)
+		HandlerConsciousnessCore.ref.consciousness_core_consumed.connect(_on_upgrade_level_up)
 		HandlerStardust.ref.stardust_created.connect(_on_upgrade_level_up)
 		HandlerStardust.ref.stardust_consumed.connect(_on_upgrade_level_up)
 		upgrade.leveled_up.connect(_on_upgrade_level_up)
@@ -50,9 +52,11 @@ func _on_purchase_button_pressed() -> void:
 	upgrade.level_up()
 
 ## Update component and disconnect signals on disabled
-func _on_upgrade_level_up() -> void:
+func _on_upgrade_level_up(_qty : int = -1) -> void:
 	update_component()
 	if upgrade.is_disabled():
+		HandlerConsciousnessCore.ref.consciousness_core_created.disconnect(_on_upgrade_level_up)
+		HandlerConsciousnessCore.ref.consciousness_core_consumed.disconnect(_on_upgrade_level_up)
 		HandlerStardust.ref.stardust_created.disconnect(update_button)
 		HandlerStardust.ref.stardust_consumed.disconnect(update_button)
 		upgrade.leveled_up.disconnect(update_component)
