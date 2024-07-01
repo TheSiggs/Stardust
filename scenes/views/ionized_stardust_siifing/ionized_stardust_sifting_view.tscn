@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://84x1dg0b0h4t" path="res://scenes/views/ionized_stardust_siifing/components/sifting_tile.tscn" id="2_5keoa"]
 [ext_resource type="Texture2D" uid="uid://cft6o6gxditli" path="res://assets/uncertainty.svg" id="3_6lsbw"]
 
-[node name="IonizedStardustSiftingView" type="Control"]
+[node name="IonizedStardustSiftingView" type="Control" node_paths=PackedStringArray("automation_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qufbd")
 packed_tile = ExtResource("2_5keoa")
+automation_timer = NodePath("AutomationTimer")
 
 [node name="IonizedMiniGameGridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -49,18 +50,33 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Reset Grid"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="AutomationButton" type="CheckButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Reveal All Tiles"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 texture_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 tooltip_text = "Consume ionized Stardust to reveal times on the grid. 
-It costs 1 ionized stardust to reveal a tile
+It costs 1 ionized stardust to manually reveal a tile and 3 ionized stardust to automatically reveal a tile
 Tiles can contain Starduyst or consciousness Cores
 
 Good luck!"
 texture = ExtResource("3_6lsbw")
 expand_mode = 2
 
+[node name="AutomationTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/AutomationButton" to="." method="_on_automation_button_toggled"]
+[connection signal="timeout" from="AutomationTimer" to="." method="_on_automation_timer_timeout"]

@@ -5,8 +5,14 @@ extends View
 ## Reference to the PackedScene containing a tile
 @export var packed_tile: PackedScene
 
+## Reference Timer
+@export var automation_timer : Timer
+
 ## List of tiles
 @export var tiles : Dictionary
+
+## Whether or not the game sifts the tiles automatically
+var is_automated : bool = false
 
 ## Init the view
 func _ready() -> void:
@@ -36,3 +42,19 @@ func reset_tiles() -> void:
 
 func _on_button_pressed() -> void:
 	reset_tiles()
+
+
+func _on_automation_timer_timeout():
+	if !is_automated || !self.visible:
+		return
+	for key : String in tiles:
+		var tile = tiles.get(key) as IonizedStardustSiftingTile
+		if tile.state == IonizedStardustSiftingTile.Tiles.COVERED:
+			tile.reveal_tile(3)
+			return
+	if tiles[tiles.keys()[tiles.keys().size() - 1]].state != IonizedStardustSiftingTile.Tiles.COVERED:
+		reset_tiles()
+
+
+func _on_automation_button_toggled(toggled_on):
+	is_automated = toggled_on

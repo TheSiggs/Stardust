@@ -35,10 +35,10 @@ func _on_pressed() -> void:
 	reveal_tile()
 
 
-func reveal_tile() -> void:
+func reveal_tile(cost : int = 1) -> void:
 	if state != Tiles.COVERED:
 		return
-	var error : Error = HandlerIonizedStardust.ref.consume_ionized_stardust(1)
+	var error : Error = HandlerIonizedStardust.ref.consume_ionized_stardust(cost)
 	if error:
 		return
 	var roll : int = randi_range(0, 100)
