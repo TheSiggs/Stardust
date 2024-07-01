@@ -53,6 +53,7 @@ func calculate_generated_power() -> void:
 	var new_power : int = 1
 	new_power += Game.ref.data.cc_upgrades.u_02_stardust_boost_level
 	new_power += HandlerNebula.ref.effect_stardust_generation
+	new_power += Game.ref.data.sifting.level
 	generator_power = new_power
 	
 	generator_power_calculated.emit()

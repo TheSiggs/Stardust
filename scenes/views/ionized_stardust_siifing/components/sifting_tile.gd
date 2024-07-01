@@ -7,7 +7,8 @@ enum Tiles {
 	COVERED,
 	EMPTY,
 	STARDUST,
-	CONSCIOUSNESS_CORE
+	CONSCIOUSNESS_CORE,
+	LIQUID_STARDUST
 }
 
 ## Covered Texture
@@ -18,6 +19,9 @@ enum Tiles {
 @export var texture_stardust : Texture2D
 ## Consciousness Core Texture
 @export var texture_cc : Texture2D
+## Liquid Stardust Texture
+@export var texture_liquid_stardust : Texture2D
+signal tile_revealed
 
 ## Coords in grid
 var key : String
@@ -51,9 +55,15 @@ func reveal_tile(cost : int = 1) -> void:
 		state = Tiles.CONSCIOUSNESS_CORE
 		texture.texture = texture_cc
 		HandlerConsciousnessCore.ref.create_concsiousness_core(1)
+	elif roll > 50 && roll <= 70:
+		state = Tiles.LIQUID_STARDUST
+		texture.texture = texture_liquid_stardust
+		var liquid_stardust_found : int = randi_range(2, 4)
+		HandlerLiquidStardust.ref.create_liquid_stardust(liquid_stardust_found)
 	else:
 		state = Tiles.EMPTY
 		texture.texture = texture_empty
+	tile_revealed.emit()
 
 func init() -> void:
 	state = Tiles.COVERED

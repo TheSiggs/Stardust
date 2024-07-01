@@ -11,6 +11,9 @@ extends Resource
 ## Current amount of ionized stardust
 @export var ionized_stardust : int = 100
 
+## Current amount of liquid stardust
+@export var liquid_stardust : int = 0
+
 ## Contains CCUpgrade data
 @export var cc_upgrades : DataCCUpgrades = DataCCUpgrades.new()
 
@@ -19,6 +22,9 @@ extends Resource
 
 ## Contains Nebula data
 @export var nebula : Array[DataNebula] = []
+
+## Contains sifting data
+@export var sifting : DataSifting = DataSifting.new()
 
 ## Placeholder Names
 @export var placeholder_names : Array[String] = ["Orion Nebula", "Eagle Nebula", "Crab Nebula", "Horsehead Nebula", "Helix Nebula", "Ring Nebula", "Carina Nebula", "Butterfly Nebula", "Cat's Eye Nebula", "Rosette Nebula",

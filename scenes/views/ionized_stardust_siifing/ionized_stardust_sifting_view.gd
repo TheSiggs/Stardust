@@ -11,6 +11,8 @@ extends View
 ## List of tiles
 @export var tiles : Dictionary
 
+@export var sifting_level_label : Label
+
 ## Whether or not the game sifts the tiles automatically
 var is_automated : bool = false
 
@@ -18,6 +20,7 @@ var is_automated : bool = false
 func _ready() -> void:
 	super()
 	generate_tiles()
+	update_level_label()
 
 ## Generate tiles for the minigame
 func generate_tiles() -> void:
@@ -30,6 +33,8 @@ func generate_tiles() -> void:
 			node.x_coord = x
 			node.y_coord = y
 			node.key = key
+			
+			node.tile_revealed.connect(_on_tile_revealed)
 			
 			$IonizedMiniGameGridContainer.add_child(node)
 			tiles[key] = node
@@ -44,10 +49,11 @@ func _on_button_pressed() -> void:
 	reset_tiles()
 
 
-func _on_automation_timer_timeout():
+func _on_automation_timer_timeout() -> void:
 	if !is_automated || !self.visible:
 		return
 	for key : String in tiles:
+		@warning_ignore("untyped_declaration")
 		var tile = tiles.get(key) as IonizedStardustSiftingTile
 		if tile.state == IonizedStardustSiftingTile.Tiles.COVERED:
 			tile.reveal_tile(3)
@@ -56,5 +62,24 @@ func _on_automation_timer_timeout():
 		reset_tiles()
 
 
-func _on_automation_button_toggled(toggled_on):
+func _on_automation_button_toggled(toggled_on : bool) -> void:
 	is_automated = toggled_on
+
+func _on_tile_revealed() -> void:
+	progress_sifting_level()
+
+func progress_sifting_level() -> void:
+	Game.ref.data.sifting.progress += 1
+	check_for_level_up()
+
+func check_for_level_up() -> void:
+	var reach : int = int(pow(8, Game.ref.data.sifting.level + 1))
+	if Game.ref.data.sifting.progress >= reach:
+		Game.ref.data.sifting.level += 1
+		Game.ref.data.sifting.progress = 0
+		update_level_label()
+		HandlerStardustGenerator.ref.calculate_generated_power()
+
+
+func update_level_label() -> void:
+	sifting_level_label.text = "Sifting Level: %s" % Game.ref.data.sifting.level

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyxyg16mba6d2"]
+[gd_scene load_steps=12 format=3 uid="uid://cyxyg16mba6d2"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_ydm26"]
 [ext_resource type="Script" path="res://scenes/user_interface/labels/consciousness_core_label.gd" id="2_euvkm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/user_interface/labels/startdust_label.gd" id="3_a1qx4"]
 [ext_resource type="Script" path="res://scenes/user_interface/ionized_stardust_label.gd" id="5_scdde"]
 [ext_resource type="PackedScene" uid="uid://dplnkbsvaogsg" path="res://scenes/views/consciousness_core/consciousness_core_view.tscn" id="7_0wvws"]
+[ext_resource type="Script" path="res://scenes/user_interface/liquid_stardust_label.gd" id="7_dw0a3"]
 [ext_resource type="PackedScene" uid="uid://b6hsowpnir5je" path="res://scenes/views/nebula/nebula_view.tscn" id="7_kywho"]
 [ext_resource type="PackedScene" uid="uid://y3cqwmnf8e4x" path="res://scenes/views/universe/universe_view.tscn" id="9_2qyo5"]
 [ext_resource type="PackedScene" uid="uid://cb7ilix8hbqg0" path="res://scenes/views/ionized_stardust_siifing/ionized_stardust_sifting_view.tscn" id="9_3kr4q"]
@@ -118,6 +119,11 @@ script = ExtResource("3_a1qx4")
 layout_mode = 2
 text = "Ionized Stardust : 0"
 script = ExtResource("5_scdde")
+
+[node name="LabelLiquidStardust" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Liquid Stardust: "
+script = ExtResource("7_dw0a3")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2

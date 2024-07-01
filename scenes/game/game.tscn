@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://70bdm4hwnxyp"]
+[gd_scene load_steps=10 format=3 uid="uid://70bdm4hwnxyp"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_58fwo"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_stardust.gd" id="2_huqmh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/handlers/handler_consciousness_core.gd" id="3_m2omx"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_ionized_stardust.gd" id="3_yi68p"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_cc_upgrades.gd" id="4_rsv6m"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_liquid_stardust.gd" id="6_84rc5"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_stardust_generator.gd" id="6_xifwb"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_nebula.gd" id="7_ab2rm"]
 
@@ -15,14 +16,19 @@ scene_user_interface = ExtResource("2_jwlu4")
 
 [node name="Handlers" type="Node" parent="."]
 
-[node name="IonizedStardust" type="Node" parent="Handlers"]
-script = ExtResource("3_yi68p")
+[node name="Resources" type="Node" parent="Handlers"]
 
-[node name="Stardust" type="Node" parent="Handlers"]
+[node name="Stardust" type="Node" parent="Handlers/Resources"]
 script = ExtResource("2_huqmh")
 
-[node name="ConsciousnessCore" type="Node" parent="Handlers"]
+[node name="IonizedStardust" type="Node" parent="Handlers/Resources"]
+script = ExtResource("3_yi68p")
+
+[node name="ConsciousnessCore" type="Node" parent="Handlers/Resources"]
 script = ExtResource("3_m2omx")
+
+[node name="LiquidStardust" type="Node" parent="Handlers/Resources"]
+script = ExtResource("6_84rc5")
 
 [node name="CCUpgrades" type="Node" parent="Handlers"]
 script = ExtResource("4_rsv6m")

@@ -3,7 +3,7 @@ class_name SaveSystem
 
 ## File to save/load
 const PATH : String = "user://save.tres"
-const SHOULD_LOAD : bool = false
+const SHOULD_LOAD : bool = true
 
 ## Write game.ref.data to file
 static func save_data() -> void:
