@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://70bdm4hwnxyp"]
+[gd_scene load_steps=11 format=3 uid="uid://70bdm4hwnxyp"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_58fwo"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_stardust.gd" id="2_huqmh"]
 [ext_resource type="PackedScene" uid="uid://cyxyg16mba6d2" path="res://scenes/user_interface/user_interface.tscn" id="2_jwlu4"]
+[ext_resource type="PackedScene" uid="uid://ba4qkulamtjqv" path="res://scenes/components/offline_progression/offline_progression_window.tscn" id="3_eohi2"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_consciousness_core.gd" id="3_m2omx"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_ionized_stardust.gd" id="3_yi68p"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_cc_upgrades.gd" id="4_rsv6m"]
@@ -13,6 +14,7 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_58fwo")
 scene_user_interface = ExtResource("2_jwlu4")
+scene_offine_progression = ExtResource("3_eohi2")
 
 [node name="Handlers" type="Node" parent="."]
 

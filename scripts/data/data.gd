@@ -2,6 +2,9 @@ class_name Data
 extends Resource
 ## Contains data to save and load
 
+## Time of last save
+@export var save_time : int = -1
+
 ## Current stardust
 @export var stardust : int = 0
 
