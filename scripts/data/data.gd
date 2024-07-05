@@ -29,6 +29,9 @@ extends Resource
 ## Contains sifting data
 @export var sifting : DataSifting = DataSifting.new()
 
+## Contains Achievements data
+@export var achievements : DataAchievements = DataAchievements.new()
+
 ## Placeholder Names
 @export var placeholder_names : Array[String] = ["Orion Nebula", "Eagle Nebula", "Crab Nebula", "Horsehead Nebula", "Helix Nebula", "Ring Nebula", "Carina Nebula", "Butterfly Nebula", "Cat's Eye Nebula", "Rosette Nebula",
 	"Trifid Nebula", "Lagoon Nebula", "Dumbbell Nebula", "Omega Nebula", "Veil Nebula", "Heart Nebula", "Soul Nebula", "North America Nebula", "Crescent Nebula", "Cone Nebula",

@@ -5,6 +5,13 @@ extends Node
 ## Singleton reference
 static var ref : Game
 
+## Singleton check
+func _singleton_check() -> void:
+	if not ref:
+		ref = self
+		return
+	queue_free()
+
 ## Game data
 var data  : Data
 
@@ -13,13 +20,6 @@ var data  : Data
 
 ## Reference to offline progression scene
 @export var scene_offine_progression : PackedScene
-
-## Singleton check
-func _singleton_check() -> void:
-	if not ref:
-		ref = self
-		return
-	queue_free()
 
 
 func _ready() -> void:
