@@ -6,7 +6,7 @@ func _init() -> void:
 	completed = Game.ref.data.achievements.ach_01_universe_created
 	
 	if !completed:
-		HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(_on_universe_created)
+		HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.connect(_on_achievement_completed)
 
 ## returns title
 func get_title() -> String:
@@ -24,8 +24,9 @@ func get_progress() -> float:
 func get_progress_goal() -> float:
 	return 1
 
-func _on_universe_created() -> void:
+## Tracks achievement completion
+func _on_achievement_completed() -> void:
 	completed = true
 	Game.ref.data.achievements.ach_01_universe_created = true
 	achievement_completed.emit()
-	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(_on_universe_created)
+	HandlerCCUpgrades.ref.u_01_stardust_generation.leveled_up.disconnect(_on_achievement_completed)

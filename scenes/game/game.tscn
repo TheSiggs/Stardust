@@ -42,15 +42,15 @@ timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Handlers/StartdustGenerator"]
 
-[node name="Achievements" type="Node" parent="Handlers"]
-script = ExtResource("4_ms2vq")
-
 [node name="Nebula" type="Node" parent="Handlers" node_paths=PackedStringArray("timer")]
 script = ExtResource("7_ab2rm")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Handlers/Nebula"]
 autostart = true
+
+[node name="Achievements" type="Node" parent="Handlers"]
+script = ExtResource("4_ms2vq")
 
 [node name="SaveTimer" type="Timer" parent="."]
 autostart = true

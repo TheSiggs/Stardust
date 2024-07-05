@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 
 
 @onready var ach_01_universe_created : Ach01UniverseCreated = Ach01UniverseCreated.new()
-
+@onready var ach_02_stardust_creator : Ach02StardustCreator = Ach02StardustCreator.new()
 
 func _ready():
 	_init_achievements()
@@ -27,5 +27,6 @@ func _init_achievements() -> void:
 
 func get_all_achievements() -> Array[Achievement]:
 	return [
-	ach_01_universe_created
+	ach_01_universe_created,
+	ach_02_stardust_creator
 ]

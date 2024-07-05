@@ -19,7 +19,8 @@ func inject_achievement_data(_achievement: Achievement) -> void:
 
 func _on_achievement_completed() -> void:
 	(%ProgressBar as ProgressBar).value = achievement.get_progress()
-	(%Veil as ColorRect).visible = achievement.completed
+	(%ProgressBar as ProgressBar).value = (%ProgressBar as ProgressBar).max_value
+	(%Veil as ColorRect).visible = true
 	achievement.achievement_completed.disconnect(_on_achievement_completed)
 	achievement.achievement_progressed.disconnect(_on_achievement_progressed)
 
